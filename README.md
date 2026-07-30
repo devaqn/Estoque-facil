@@ -106,3 +106,33 @@ que é o objetivo aqui. Não é uma proteção militar: como o código roda em J
 (não é um `.exe` compilado/ofuscado), alguém tecnicamente muito experiente que abrisse os
 arquivos poderia, em teoria, entender o esquema. Para o público-alvo (lojistas comprando um
 sistema de estoque), essa trava já resolve o problema real, que é compartilhamento casual.
+
+### O que foi testado e confirmado
+
+- O sistema bloqueia todas as telas/rotas (produtos, vendas, etc. — erro 403) antes de ativar.
+- Uma chave gerada para o código de **outra** máquina é recusada ao tentar ativar aqui.
+- Uma chave adulterada (assinatura alterada manualmente) também é recusada.
+- A chave correta ativa o sistema pela tela de verdade (cliquei no botão "Ativar" de fato,
+  não só chamei a API), libera todas as telas e a ativação continua valendo depois de
+  reiniciar o servidor.
+- A versão desktop (Electron) também exige ativação e usa o mesmo código de máquina que a
+  versão web — faz sentido, já que é o mesmo Windows por baixo das duas versões.
+
+### O que eu não consegui testar (limitações conhecidas)
+
+- **Só tenho um computador disponível aqui**, então não testei ativação em uma segunda
+  máquina física de verdade. O cenário "até 2 computadores por licença" foi validado de
+  forma simulada (gerei uma chave para um código fictício de outra máquina e confirmei que
+  é recusada nesta) — a lógica está correta, mas não é o mesmo que provar em hardware real.
+- Não consegui tirar uma **captura de tela de verdade** da tela de ativação nesta sessão —
+  a extensão do navegador que uso para isso ficou indisponível no meio do teste. Confirmei o
+  funcionamento clicando de fato no botão pelo DOM da página e conferindo a resposta da API,
+  então o comportamento está validado, só não tenho uma foto da tela pronta.
+- Não testei o que acontece se o Windows do cliente **bloquear a leitura** da chave de
+  registro usada para gerar o código da máquina (`HKLM\SOFTWARE\Microsoft\Cryptography\MachineGuid`)
+  — pode acontecer em PCs corporativos com políticas restritas. Existe um código alternativo
+  de reserva (baseado no nome do computador) para esse caso, mas esse caminho alternativo em
+  si não foi testado na prática.
+- Não testei o comportamento depois de uma reinstalação do Windows do cliente (o código da
+  máquina muda nesse caso e uma nova ativação seria necessária — é o esperado, mas não foi
+  verificado ao vivo).
