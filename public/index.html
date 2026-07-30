@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="color-scheme" content="light" />
+<title>Estoque Fácil</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📦</text></svg>" />
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+<div id="activation-screen" class="activation-screen"></div>
+
+<div class="app" style="display:none">
+  <aside class="sidebar">
+    <div class="brand">
+      <span class="brand-icon">📦</span>
+      <span class="brand-name">Estoque Fácil</span>
+    </div>
+    <nav class="nav">
+      <a href="#/dashboard" class="nav-item" data-route="dashboard">
+        <span class="nav-icon">🏠</span> Início
+      </a>
+      <a href="#/produtos" class="nav-item" data-route="produtos">
+        <span class="nav-icon">🏷️</span> Produtos
+      </a>
+      <a href="#/estoque" class="nav-item" data-route="estoque">
+        <span class="nav-icon">📥</span> Entrada de mercadoria
+      </a>
+      <a href="#/vendas" class="nav-item" data-route="vendas">
+        <span class="nav-icon">🧾</span> Vendas
+      </a>
+      <a href="#/fornecedores" class="nav-item" data-route="fornecedores">
+        <span class="nav-icon">🚚</span> Fornecedores
+      </a>
+    </nav>
+    <div class="sidebar-footer">Feito para lojas pequenas ✨</div>
+  </aside>
+
+  <main class="content">
+    <header class="topbar">
+      <h1 id="page-title">Início</h1>
+      <div id="page-actions" class="page-actions"></div>
+    </header>
+    <div id="view" class="view"></div>
+  </main>
+</div>
+
+<div id="modal-root"></div>
+<div id="toast-root" class="toast-root"></div>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+{
+  "name": "gestao-de-estoque",
+  "version": "1.0.0",
+  "description": "Sistema simples de controle de estoque para lojas pequenas",
+  "private": true,
+  "main": "electron/main.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "desktop": "electron ."
+  },
+  "dependencies": {
+    "express": "^4.22.2"
+  },
+  "devDependencies": {
+    "electron": "^43.2.0"
+  }
+}
